@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function About() {
   const aboutInfo = [
     { label: 'Name', value: 'Feven Tolosa', icon: '👩‍💻' },
-    { label: 'Date of birth', value: 'September 03, 2004', icon: '🎂' },
+    // { label: 'Date of birth', value: 'September 03, 2004', icon: '🎂' },
     { label: 'Address', value: 'Addis Ababa, Ethiopia', icon: '📍' },
     { label: 'Email', value: 'feventolosa14@gmail.com', icon: '✉️' },
     { label: 'Phone', value: '+251-939-733-939', icon: '📱' },
