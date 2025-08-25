@@ -1,6 +1,7 @@
 // components/Navbar.tsx
 'use client'
 
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 export default function Navbar() {
@@ -13,14 +14,7 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 10)
 
       // Update active section based on scroll position
-      const sections = [
-        'home',
-        'about',
-        'skills',
-        'projects',
-        'resume',
-        'contact',
-      ]
+      const sections = ['about', 'skills', 'projects', 'resume', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -41,20 +35,26 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // components/Navbar.tsx (update the navItems)
   const navItems = [
-    // { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Resume', href: '#resume' },
+    { name: 'Resume', href: '/resume' }, // Link to the resume page
     { name: 'Contact', href: '#contact' },
   ]
 
+  // Update the scrollToSection function to handle both hash links and page links
   const scrollToSection = (href: string) => {
-    const sectionId = href.replace('#', '')
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (href.startsWith('#')) {
+      const sectionId = href.replace('#', '')
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // This is a page link, let Next.js handle it normally
+      window.location.href = href
     }
     setIsMobileMenuOpen(false)
   }
@@ -69,12 +69,12 @@ export default function Navbar() {
     >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between items-center'>
-          <a
-            href='#home'
+          <Link
+            href='/'
             className='text-xl font-bold text-purple-600 dark:text-purple-400'
           >
             Feven.dev
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex space-x-8'>
