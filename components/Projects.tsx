@@ -14,7 +14,7 @@ export default function Projects() {
         'A comprehensive security management platform with real-time monitoring',
       image: '/images/project-6.png',
       link: 'https://security-system-ashen.vercel.app/',
-      tags: ['React', 'Next.js', 'Tailwind'],
+      tags: ['Next.js', 'React', 'Tailwind'],
       category: 'web',
     },
     {
@@ -22,7 +22,7 @@ export default function Projects() {
       description: 'Website for agricultural services and products',
       image: '/images/project-7.png',
       link: 'https://waf-theta.vercel.app/',
-      tags: ['React', 'CSS', 'JavaScript'],
+      tags: ['Next.js', 'Tailwind', 'React'],
       category: 'web',
     },
     {
@@ -64,6 +64,14 @@ export default function Projects() {
       image: '/images/project-4.png',
       link: 'https://f3n-shopping.netlify.app/',
       tags: ['React', 'Node.js', 'MongoDB'],
+      category: 'web',
+    },
+    {
+      title: 'Influencer Market',
+      description: 'A marketplace connecting influencers with brands',
+      image: '/images/project-8.png',
+      link: 'https://famous-two.vercel.app/',
+      tags: ['Next.js', 'React', 'Talwind'],
       category: 'web',
     },
   ]
