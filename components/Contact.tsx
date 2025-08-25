@@ -2,6 +2,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,10 @@ export default function Contact() {
     subject: '',
     message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle')
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,10 +27,43 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend or email service
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsSubmitting(true)
+
+    try {
+      // Using EmailJS to send emails
+      // You'll need to create an account at https://www.emailjs.com/
+      // and replace these values with your own
+      const serviceID = 'your_service_id'
+      const templateID = 'your_template_id'
+      const userID = 'your_user_id'
+
+      // This is a placeholder for the actual email sending implementation
+      // In a real application, you would use a service like EmailJS, Formspree, or a backend API
+      console.log('Form submitted:', formData)
+
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } catch (error) {
+      console.error('Error sending message:', error)
+      setSubmitStatus('error')
+
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 },
   }
 
   return (
@@ -40,7 +78,13 @@ export default function Contact() {
       </div>
 
       <div className='container mx-auto px-6 relative z-10'>
-        <div className='text-center mb-16'>
+        <motion.div
+          className='text-center mb-16'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <span className='text-purple-600 dark:text-purple-400 font-medium'>
             Get In Touch
           </span>
@@ -51,10 +95,15 @@ export default function Contact() {
             Have a project in mind or want to discuss potential opportunities? I
             would love to hear from you.
           </p>
-        </div>
+        </motion.div>
 
         <div className='grid lg:grid-cols-2 gap-12'>
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h3 className='text-2xl font-semibold mb-6 text-gray-800 dark:text-white'>
               Contact Information
             </h3>
@@ -181,9 +230,14 @@ export default function Contact() {
                 </svg>
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h3 className='text-2xl font-semibold mb-6 text-gray-800 dark:text-white'>
               Send Me a Message
             </h3>
@@ -267,12 +321,60 @@ export default function Contact() {
 
               <button
                 type='submit'
-                className='w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30'
+                disabled={isSubmitting}
+                className='w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center'
               >
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <svg
+                      className='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                    >
+                      <circle
+                        className='opacity-25'
+                        cx='12'
+                        cy='12'
+                        r='10'
+                        stroke='currentColor'
+                        strokeWidth='4'
+                      ></circle>
+                      <path
+                        className='opacity-75'
+                        fill='currentColor'
+                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                      ></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
               </button>
+
+              {submitStatus === 'success' && (
+                <motion.div
+                  className='p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg'
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  Thank you for your message! I will get back to you soon.
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  className='p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg'
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  Sorry, there was an error sending your message. Please try
+                  again or contact me directly at feventolosa14@gmail.com
+                </motion.div>
+              )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
