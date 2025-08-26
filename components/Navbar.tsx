@@ -40,8 +40,8 @@ export default function Navbar() {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Resume', href: '/resume' }, // Link to the resume page
     { name: 'Contact', href: '#contact' },
+    { name: 'Resume', href: '/resume' }, // Link to the resume page
   ]
 
   // Update the scrollToSection function to handle both hash links and page links
