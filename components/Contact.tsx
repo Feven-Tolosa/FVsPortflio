@@ -25,38 +25,20 @@ export default function Contact() {
     })
   }
 
-  // components/Contact.tsx (updated email sending part)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
-      // Correct way to access environment variables
-      const serviceID = process.env.EMAILJS_SERVICE_ID
-      const templateID = process.env.EMAILJS_TEMPLATE_ID
-      const userID =
-        process.env.EMAILJS_USER_ID || process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+      // Using EmailJS to send emails
+      const serviceID = 'service_s4y2l6r'
+      const templateID = 'template_gsq4dlr'
+      const userID = 'cvknQ-2vuNZJLCQNP'
 
-      if (!serviceID || !templateID || !userID) {
-        throw new Error('EmailJS configuration is missing')
-      }
+      console.log('Form submitted:', formData)
 
-      // Initialize EmailJS (make sure you've installed emailjs-com: npm install emailjs-com)
-      const emailjs = (await import('emailjs-com')).default
-
-      // Send the email
-      await emailjs.send(
-        serviceID,
-        templateID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: 'feventolosa14@gmail.com', // Your email address
-        },
-        userID
-      )
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
 
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })

@@ -11,16 +11,29 @@ export default function Skills() {
   }, [])
 
   const skills = [
-    { name: 'HTML5', level: 95, color: 'from-orange-500 to-orange-600' },
+    // from-gray-800 to-gray-900
+    {
+      name: 'HTML5',
+      level: 95,
+      color: 'from-teal-400 to-teal-500 ',
+    },
     { name: 'CSS3', level: 95, color: 'from-blue-500 to-blue-600' },
     { name: 'JavaScript', level: 90, color: 'from-yellow-500 to-yellow-600' },
     { name: 'React', level: 95, color: 'from-cyan-500 to-cyan-600' },
-    { name: 'Next.js', level: 80, color: 'from-gray-800 to-gray-900' },
+    {
+      name: 'Next.js',
+      level: 80,
+      color: 'from-gray-500 to-gray-600',
+    },
     { name: 'Node.js', level: 85, color: 'from-green-500 to-green-600' },
-    { name: 'Express', level: 90, color: 'from-gray-500 to-gray-600' },
+    { name: 'Express', level: 90, color: 'from-indigo-500 to-indigo-600' },
     { name: 'MySQL', level: 85, color: 'from-blue-400 to-blue-500' },
-    { name: 'Git & GitHub', level: 85, color: 'from-gray-700 to-gray-800' },
-    { name: 'Tailwind CSS', level: 90, color: 'from-teal-400 to-teal-500' },
+    { name: 'Git & GitHub', level: 85, color: 'from-cyan-500 to-cyan-600' },
+    {
+      name: 'Tailwind CSS',
+      level: 90,
+      color: 'from-orange-500 to-orange-600',
+    },
     { name: 'React Native', level: 75, color: 'from-blue-600 to-blue-700' },
     {
       name: 'API Development',

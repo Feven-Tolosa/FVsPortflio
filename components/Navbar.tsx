@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className='hidden md:flex space-x-8'>
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 onClick={(e) => {
@@ -93,7 +93,7 @@ export default function Navbar() {
                 }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
