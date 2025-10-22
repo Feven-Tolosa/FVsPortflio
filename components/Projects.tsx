@@ -42,14 +42,14 @@ export default function Projects() {
       tags: ['React', 'Firebase', 'API'],
       category: 'clone',
     },
-    {
-      title: 'Amazon Clone',
-      description: 'E-commerce platform with product listings and cart',
-      image: '/images/project-3.jpg',
-      link: 'https://amazonclonemercy.netlify.app/',
-      tags: ['React', 'Context API', 'CSS'],
-      category: 'clone',
-    },
+    // {
+    //   title: 'Amazon Clone',
+    //   description: 'E-commerce platform with product listings and cart',
+    //   image: '/images/project-3.jpg',
+    //   link: 'https://amazonclonemercy.netlify.app/',
+    //   tags: ['React', 'Context API', 'CSS'],
+    //   category: 'clone',
+    // },
     {
       title: 'Mercy Photography',
       description: 'Portfolio website for a photography studio',
