@@ -1,4 +1,3 @@
-// components/Contact.tsx
 'use client'
 
 import { useState } from 'react'
@@ -28,31 +27,27 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
 
     try {
-      // Using EmailJS to send emails
-      const serviceID = 'service_s4y2l6r'
-      const templateID = 'template_gsq4dlr'
-      const userID = 'cvknQ-2vuNZJLCQNP'
+      const res = await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-      console.log('Form submitted:', formData)
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
-
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000)
+      if (res.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+      }
     } catch (error) {
       console.error('Error sending message:', error)
       setSubmitStatus('error')
-
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000)
     } finally {
       setIsSubmitting(false)
+      setTimeout(() => setSubmitStatus('idle'), 4000)
     }
   }
 
