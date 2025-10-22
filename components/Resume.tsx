@@ -392,7 +392,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <a
-            href='/Feven_Tolosa_updated.pdf'
+            href='/Feven_Tolosa_Resume.pdf'
             download='Feven_Tolosa_Resume.pdf'
             className='inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30'
           >
