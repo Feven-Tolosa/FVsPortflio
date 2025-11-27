@@ -1,4 +1,3 @@
-// components/Resume.tsx (updated for standalone page)
 'use client'
 
 import { motion } from 'framer-motion'
@@ -19,14 +18,14 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
     {
       title: 'Full-Stack Developer',
       company: 'Information Network Security Agency',
-      period: 'Jul 2025 - Present',
+      period: 'Jul 2025 - Oct 20 2025',
       description: 'Working on security-focused web applications and systems.',
       location: 'Ethiopia',
     },
     {
       title: 'Full-Stack Developer',
       company: 'Faulcon Enterprise LLC',
-      period: 'Jul 2025 - Present',
+      period: 'Jul 2025 - Nov 2025',
       description:
         'Reviewed and optimized an existing codebase, implementing frontend improvements using Next.js & Tailwind CSS for enhanced UI/UX. Supported backend development, integrating APIs with Node.js & MySQL and debugging performance-critical issues.',
       location: 'USA',
@@ -34,7 +33,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
     {
       title: 'Full-Stack Developer',
       company: 'Debo Engineering',
-      period: 'Dec 2024 - Jun 2025',
+      period: 'Dec 2024 - Present',
       description:
         'Developed full-stack web apps using Next.js, React, Node.js, Express, and MySQL. Built responsive UIs with React & Next.js and integrated RESTful APIs with Node.js/Express. Designed and optimized MySQL databases for efficient data handling.',
       location: 'Ethiopia',
@@ -72,8 +71,8 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
     {
       degree: "Bachelor's degree",
       institution: 'Jimma University',
-      period: '2024',
-      description: "Completed bachelor's degree program.",
+      period: '2022-2027',
+      description: "Undergraduate bachelor's degree program.",
     },
     {
       degree: 'Boot camp',
