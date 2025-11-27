@@ -179,7 +179,7 @@ export default function Hero() {
             <div className='relative'>
               <div className='w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl'>
                 <Image
-                  src='/images/bg_1.png'
+                  src='/images/bg_2.jpeg'
                   alt='Feven Tolosa'
                   width={400}
                   height={400}

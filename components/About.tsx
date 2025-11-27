@@ -4,7 +4,6 @@ import Image from 'next/image'
 export default function About() {
   const aboutInfo = [
     { label: 'Name', value: 'Feven Tolosa', icon: '👩‍💻' },
-    // { label: 'Date of birth', value: 'September 03, 2004', icon: '🎂' },
     { label: 'Address', value: 'Addis Ababa, Ethiopia', icon: '📍' },
     { label: 'Email', value: 'feventolosa14@gmail.com', icon: '✉️' },
     { label: 'Phone', value: '+251-939-733-939', icon: '📱' },
@@ -39,7 +38,7 @@ export default function About() {
           <div>
             <div className='rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300'>
               <img
-                src='/images/bg_1.png'
+                src='/images/bg_2.jpeg'
                 alt='Feven Tolosa'
                 className='w-full h-auto object-cover'
               />
