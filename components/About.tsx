@@ -34,75 +34,63 @@ export default function About() {
           </p>
         </div>
 
-        <div className='grid lg:grid-cols-2 gap-12 items-center'>
-          <div>
-            <div className='rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300'>
-              <img
-                src='/images/bg_2.jpeg'
-                alt='Feven Tolosa'
-                className='w-full h-auto object-cover'
-              />
-            </div>
-          </div>
+        <div className='items-center'>
+          <h3 className='text-2xl font-semibold mb-6 text-gray-800 dark:text-white'>
+            Who I Am
+          </h3>
+          <p className='text-gray-600 dark:text-gray-400 mb-6'>
+            I am a dedicated full-stack developer based in Ethiopia,
+            specializing in building exceptional digital experiences. With a
+            strong foundation in both front-end and back-end technologies, I
+            create solutions that are both visually appealing and highly
+            functional.
+          </p>
 
-          <div>
-            <h3 className='text-2xl font-semibold mb-6 text-gray-800 dark:text-white'>
-              Who I Am
-            </h3>
-            <p className='text-gray-600 dark:text-gray-400 mb-6'>
-              I am a dedicated full-stack developer based in Ethiopia,
-              specializing in building exceptional digital experiences. With a
-              strong foundation in both front-end and back-end technologies, I
-              create solutions that are both visually appealing and highly
-              functional.
-            </p>
+          <p className='text-gray-600 dark:text-gray-400 mb-8'>
+            My approach combines creative design with technical expertise to
+            deliver user-friendly applications that meet both business goals and
+            user needs. I am constantly learning and adapting to new
+            technologies to stay at the forefront of web development.
+          </p>
 
-            <p className='text-gray-600 dark:text-gray-400 mb-8'>
-              My approach combines creative design with technical expertise to
-              deliver user-friendly applications that meet both business goals
-              and user needs. I am constantly learning and adapting to new
-              technologies to stay at the forefront of web development.
-            </p>
-
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-8'>
-              {aboutInfo.map((item, index) => (
-                <div
-                  key={index}
-                  className='flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg'
-                >
-                  <span className='text-2xl mr-3'>{item.icon}</span>
-                  <div>
-                    <span className='block font-medium text-gray-700 dark:text-gray-300'>
-                      {item.label}
-                    </span>
-                    <span className='text-gray-600 dark:text-gray-400'>
-                      {item.value}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href='#contact'
-              className='inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30'
-            >
-              Lets Connect
-              <svg
-                className='w-5 h-5 ml-2'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-8'>
+            {aboutInfo.map((item, index) => (
+              <div
+                key={index}
+                className='flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg'
               >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M14 5l7 7m0 0l-7 7m7-7H3'
-                ></path>
-              </svg>
-            </a>
+                <span className='text-2xl mr-3'>{item.icon}</span>
+                <div>
+                  <span className='block font-medium text-gray-700 dark:text-gray-300'>
+                    {item.label}
+                  </span>
+                  <span className='text-gray-600 dark:text-gray-400'>
+                    {item.value}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
+
+          <a
+            href='#contact'
+            className='inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30'
+          >
+            Lets Connect
+            <svg
+              className='w-5 h-5 ml-2'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M14 5l7 7m0 0l-7 7m7-7H3'
+              ></path>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
