@@ -183,7 +183,7 @@ export default function Hero() {
                   alt='Feven Tolosa'
                   width={400}
                   height={400}
-                  className='w-full h-full object-cover'
+                  className='w-full h-full hover:transform hover:scale-110 duration-200 object-cover'
                 />
               </div>
 
