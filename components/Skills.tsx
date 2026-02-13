@@ -98,7 +98,7 @@ export default function Skills() {
             My Development Approach
           </h3>
           <div className='grid md:grid-cols-3 gap-8'>
-            <div className='bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300'>
+            <div className='bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-xl transition-all duration-300'>
               <div className='w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-4 mx-auto'>
                 <svg
                   className='w-7 h-7 text-purple-600 dark:text-purple-400'
@@ -123,7 +123,7 @@ export default function Skills() {
               </p>
             </div>
 
-            <div className='bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300'>
+            <div className='bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-xl transition-all duration-300'>
               <div className='w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mb-4 mx-auto'>
                 <svg
                   className='w-7 h-7 text-pink-600 dark:text-pink-400'
@@ -148,7 +148,7 @@ export default function Skills() {
               </p>
             </div>
 
-            <div className='bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300'>
+            <div className='bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-xl transition-all duration-300'>
               <div className='w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center mb-4 mx-auto'>
                 <svg
                   className='w-7 h-7 text-yellow-600 dark:text-yellow-400'

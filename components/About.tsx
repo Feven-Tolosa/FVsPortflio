@@ -1,6 +1,3 @@
-import Image from 'next/image'
-
-// components/About.tsx
 export default function About() {
   const aboutInfo = [
     { label: 'Name', value: 'Feven Tolosa', icon: '👩‍💻' },
