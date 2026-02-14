@@ -1,7 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Github,
+  Instagram,
+  Send,
+} from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +22,17 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  // ✅ Auto hide message
+  useEffect(() => {
+    if (status !== 'idle') {
+      const timer = setTimeout(() => {
+        setStatus('idle')
+      }, 4000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [status])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -49,10 +69,7 @@ export default function Contact() {
   }
 
   return (
-    <section
-      id='contact'
-      className='relative py-24 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white overflow-hidden'
-    >
+    <section className='relative py-24 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white overflow-hidden'>
       {/* Glow Background */}
       <div className='absolute inset-0 -z-10'>
         <div className='absolute top-20 left-20 w-72 h-72 bg-purple-600 rounded-full blur-3xl opacity-20' />
@@ -72,52 +89,66 @@ export default function Contact() {
           </h2>
 
           <p className='text-gray-400 mb-10'>
-            Have a project idea or collaboration in mind? I’m always open to
-            meaningful conversations.
+            I’m open to freelance work, internships, or collaborations.
           </p>
 
           <div className='space-y-6 text-gray-300'>
-            <div>
-              <p className='text-sm text-gray-500'>Email</p>
-              <p className='text-lg'>feventolosa14@gmail.com</p>
+            <div className='flex items-center gap-4'>
+              <Mail className='text-purple-400' size={20} />
+              <span>feventolosa14@gmail.com</span>
             </div>
 
-            <div>
-              <p className='text-sm text-gray-500'>Phone</p>
-              <p className='text-lg'>+251 939 733 939</p>
+            <div className='flex items-center gap-4'>
+              <Phone className='text-purple-400' size={20} />
+              <span>+251 939 733 939</span>
             </div>
 
-            <div>
-              <p className='text-sm text-gray-500'>Location</p>
-              <p className='text-lg'>Addis Ababa, Ethiopia</p>
+            <div className='flex items-center gap-4'>
+              <MapPin className='text-purple-400' size={20} />
+              <span>Addis Ababa, Ethiopia</span>
             </div>
           </div>
 
           {/* Social Links */}
           <div className='flex gap-4 mt-10'>
-            {[
-              {
-                name: 'LinkedIn',
-                url: 'https://www.linkedin.com/in/feven-t-42baa8323/',
-              },
-              { name: 'GitHub', url: 'https://github.com/Feven-Tolosa' },
-              { name: 'Instagram', url: 'https://instagram.com/yourusername' },
-              { name: 'Telegram', url: 'https://t.me/yourusername' },
-            ].map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='px-4 py-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-sm'
-              >
-                {social.name}
-              </a>
-            ))}
+            <a
+              href='https://www.linkedin.com/in/feven-mercy-42baa8323/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 hover:bg-purple-600 transition'
+            >
+              <Linkedin size={18} />
+            </a>
+
+            <a
+              href='https://github.com/Feven-Tolosa'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 hover:bg-purple-600 transition'
+            >
+              <Github size={18} />
+            </a>
+
+            <a
+              href='https://www.instagram.com/mercyfev_/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 hover:bg-pink-600 transition'
+            >
+              <Instagram size={18} />
+            </a>
+
+            <a
+              href='https://t.me/TAFNEM'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 hover:bg-purple-600 transition'
+            >
+              <Send size={18} />
+            </a>
           </div>
         </motion.div>
-
-        {/* RIGHT SIDE - FORM */}
+        {/* FORM */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 40 }}
