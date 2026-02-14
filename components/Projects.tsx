@@ -88,7 +88,10 @@ export default function Projects() {
       : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <section id='projects' className='py-20 bg-white dark:bg-gray-900'>
+    <section
+      id='projects'
+      className='py-20 bg-white bg-gradient-to-b from-gray-950 via-gray-900 to-black'
+    >
       <div className='container mx-auto px-6'>
         <div className='text-center mb-16'>
           <span className='text-purple-600 dark:text-purple-400 font-medium'>

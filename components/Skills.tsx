@@ -43,7 +43,7 @@ export default function Skills() {
   return (
     <section
       id='skills'
-      className='py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden'
+      className='py-20 bg-gray-50 bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden'
     >
       {/* Background pattern */}
       <div className='absolute inset-0 opacity-10'>
