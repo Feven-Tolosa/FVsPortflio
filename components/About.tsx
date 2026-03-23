@@ -9,7 +9,7 @@ export default function About() {
   return (
     <section
       id='about'
-      className='py-20 bg-white bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden'
+      className='py-20 bg-white bg-linear-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden'
     >
       {/* Background pattern */}
       <div className='absolute top-0 left-0 w-full h-full opacity-5'>

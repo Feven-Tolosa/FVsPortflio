@@ -90,7 +90,7 @@ export default function Projects() {
   return (
     <section
       id='projects'
-      className='py-20 bg-white bg-gradient-to-b from-gray-950 via-gray-900 to-black'
+      className='py-20 bg-white bg-linear-to-b from-gray-950 via-gray-900 to-black'
     >
       <div className='container mx-auto px-6'>
         <div className='text-center mb-16'>
