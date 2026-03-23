@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero() {
   const fadeIn = {
@@ -128,7 +129,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <a
+              <Link
                 href='#projects'
                 className='bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30 flex items-center justify-center'
               >
@@ -146,9 +147,9 @@ export default function Hero() {
                     d='M14 5l7 7m0 0l-7 7m7-7H3'
                   ></path>
                 </svg>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href='#contact'
                 className='border border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-600 hover:text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium flex items-center justify-center'
               >
@@ -166,7 +167,7 @@ export default function Hero() {
                     d='M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z'
                   ></path>
                 </svg>
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
 
