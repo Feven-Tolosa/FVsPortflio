@@ -70,7 +70,7 @@ export default function Contact() {
 
   return (
     <section
-      id='#contact'
+      id='contact'
       className='relative py-24 bg-linear-to-b from-gray-950 via-gray-900 to-black text-white overflow-hidden'
     >
       {/* Glow Background */}
