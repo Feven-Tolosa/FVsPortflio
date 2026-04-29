@@ -33,7 +33,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <Script id='chatling-config' strategy='afterInteractive'>
+        <Script id='chatling-config' strategy='beforeInteractive'>
           {`
     window.chtlConfig = {
       chatbotId: "5944467262"
