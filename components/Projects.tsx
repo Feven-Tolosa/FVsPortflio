@@ -9,6 +9,15 @@ export default function Projects() {
 
   const projects = [
     {
+      title: 'Selam Markets',
+      description:
+        'An e-commerce platform for local vendors to sell their products online and for customers to discover and purchase a local wide variety of goods',
+      image: '/images/project9.png',
+      link: 'https://selam-markets.vercel.app/',
+      tags: ['Next.js', 'Supabase', 'Tailwind'],
+      category: 'web',
+    },
+    {
       title: 'Security System',
       description:
         'A comprehensive security management platform with real-time monitoring',

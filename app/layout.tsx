@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Script from 'next/script'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +33,20 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Script id='chatling-config' strategy='afterInteractive'>
+          {`
+    window.chtlConfig = {
+      chatbotId: "5944467262"
+    };
+  `}
+        </Script>
+
+        {/* Chatling embed */}
+        <Script
+          id='chatling-script'
+          src='https://chatling.ai/js/embed.js'
+          strategy='afterInteractive'
+        />
       </body>
     </html>
   )
