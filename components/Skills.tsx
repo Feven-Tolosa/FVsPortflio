@@ -20,7 +20,7 @@ export default function Skills() {
     { name: 'React', level: 95, color: 'from-cyan-500 to-cyan-600' },
     {
       name: 'Next.js',
-      level: 80,
+      level: 85,
       color: 'from-gray-500 to-gray-600',
     },
     { name: 'Node.js', level: 85, color: 'from-green-500 to-green-600' },
@@ -32,6 +32,7 @@ export default function Skills() {
       level: 90,
       color: 'from-orange-500 to-orange-600',
     },
+    { name: 'Supabase', level: 80, color: 'from-green-400 to-green-500' },
     { name: 'React Native', level: 75, color: 'from-blue-600 to-blue-700' },
     {
       name: 'API Development',

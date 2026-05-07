@@ -83,6 +83,14 @@ export default function Projects() {
       tags: ['Next.js', 'React', 'Talwind'],
       category: 'web',
     },
+    {
+      title: 'JUSCDC platform',
+      description: 'Career Development Club website',
+      image: '/images/project-9.png',
+      link: 'https://juscdc-platform.vercel.app/',
+      tags: ['Next.js', 'Supabase', 'Talwind'],
+      category: 'web',
+    },
   ]
 
   const filters = [
