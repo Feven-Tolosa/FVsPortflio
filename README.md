@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💼 Feven Tolosa Portfolio
 
-## Getting Started
+A modern and responsive developer portfolio built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion** to showcase my projects, skills, and contact information.
 
-First, run the development server:
+## 🚀 Live Demo
+
+🌐 Portfolio Website:
+[Feven Tolosa Portfolio](https://f-vs-portflio-zpwp.vercel.app/)
+
+---
+
+# ✨ Features
+
+* Modern responsive UI
+* Smooth animations with Framer Motion
+* Dark mode support
+* Project showcase section
+* Skills & experience sections
+* Contact form with real email sending
+* API route integration using Nodemailer
+* Social media links
+* Mobile-friendly design
+* Optimized performance with Next.js
+
+---
+
+# 🛠️ Tech Stack
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* Nodemailer
+* Vercel
+
+---
+
+# 📂 Project Structure
+
+```bash
+app/
+ ├── api/
+ │    └── messages/
+ │         └── route.ts
+ ├── resume
+      └── page.tsx
+components/
+ ├── Contact.tsx
+ ├── Hero.tsx
+ ├── Projects.tsx
+ └── ...
+public/
+styles/
+```
+
+---
+
+# 📧 Contact Form Setup
+
+This project uses **Nodemailer** with a Next.js API route to send emails directly from the contact form.
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+CONTACT_EMAIL=your_email@gmail.com
+SERVICE_ID = 'ID'
+TEMPLATE_ID = 'ID'
+USER_ID = 'ID'
+```
+
+---
+
+# ▶️ Getting Started
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/Feven-Tolosa/FVsPortflio.git
+```
+
+## 2. Navigate into the project
+
+```bash
+cd FVsPortflio
+```
+
+## 3. Install dependencies
+
+```bash
+npm install
+```
+
+## 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📸 Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+![Security-Systems Banner](/public/screenshot.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+/public/screenshots
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# 📬 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Email: `tolosafeven14@gmail.com`
+* GitHub:
+  [Feven Tolosa GitHub](https://github.com/Feven-Tolosa)
+* LinkedIn:
+  [Feven Tolosa LinkedIn](https://www.linkedin.com/in/feven-mercy-42baa8323/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# 👩‍💻 Developed By
+
+Built with ❤️ by **Feven Tolosa**
+
+---
+
+# 📄 License
+
+This project is open source and available under the MIT License.
