@@ -26,7 +26,7 @@ export default function Hero() {
       className='min-h-screen flex items-center justify-center relative overflow-hidden pt-16 '
     >
       {/* Background elements */}
-      <div className='absolute inset-0 bg-gradient-to-b from-gray-950 via-gray-900 to-black  z-0'></div>
+      <div className='absolute inset-0 bg-transparent from-gray-950 via-gray-900 to-black  z-0'></div>
 
       {/* Animated shapes */}
       <motion.div

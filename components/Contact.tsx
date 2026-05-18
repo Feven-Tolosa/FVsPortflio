@@ -71,7 +71,7 @@ export default function Contact() {
   return (
     <section
       id='contact'
-      className='relative py-24 bg-linear-to-b from-gray-950 via-gray-900 to-black text-white overflow-hidden'
+      className='relative py-24 bg-transparent text-white overflow-hidden'
     >
       {/* Glow Background */}
       <div className='absolute inset-0 -z-10'>

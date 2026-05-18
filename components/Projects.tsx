@@ -51,14 +51,6 @@ export default function Projects() {
       tags: ['React', 'Firebase', 'API'],
       category: 'clone',
     },
-    // {
-    //   title: 'Amazon Clone',
-    //   description: 'E-commerce platform with product listings and cart',
-    //   image: '/images/project-3.jpg',
-    //   link: 'https://amazonclonemercy.netlify.app/',
-    //   tags: ['React', 'Context API', 'CSS'],
-    //   category: 'clone',
-    // },
     {
       title: 'Mercy Photography',
       description: 'Portfolio website for a photography studio',
@@ -105,10 +97,7 @@ export default function Projects() {
       : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <section
-      id='projects'
-      className='py-20 bg-white bg-linear-to-b from-gray-950 via-gray-900 to-black'
-    >
+    <section id='projects' className='py-20 bg-transparent'>
       <div className='container mx-auto px-6'>
         <div className='text-center mb-16'>
           <span className='text-purple-600 dark:text-purple-400 font-medium'>
@@ -124,7 +113,7 @@ export default function Projects() {
         </div>
 
         {/* Filter buttons */}
-        <div className='flex justify-center mb-12'>
+        <div className='flex justify-center mb-12 '>
           <div className='inline-flex rounded-lg border border-gray-200 dark:border-gray-700 p-1'>
             {filters.map((filter) => (
               <button
@@ -143,7 +132,7 @@ export default function Projects() {
         </div>
 
         {/* Projects grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white bg-linear-to-b from-gray-950 via-gray-900 to-black'>
           {filteredProjects.map((project, index) => (
             <div
               key={index}
