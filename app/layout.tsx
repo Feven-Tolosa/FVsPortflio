@@ -37,7 +37,7 @@ export default function RootLayout({
             muted
             loop
             playsInline
-            className='h-full w-full object-cover'
+            className='h-full w-full object-cover '
           >
             <source src='/bgv.mp4' type='video/mp4' />
           </video>
