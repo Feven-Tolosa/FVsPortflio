@@ -2,7 +2,7 @@
 
 A modern and responsive developer portfolio built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion** to showcase my projects, skills, and contact information.
 
-## 🚀 Live Demo
+## Live Demo
 
 🌐 Portfolio Website:
 [Feven Tolosa Portfolio](https://f-vs-portflio-zpwp.vercel.app/)
