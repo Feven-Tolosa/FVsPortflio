@@ -1,4 +1,4 @@
-# 💼 Feven Tolosa Portfolio
+# 🙃 Feven Tolosa Portfolio
 
 A modern and responsive developer portfolio built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion** to showcase my projects, skills, and contact information.
 
