@@ -100,9 +100,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
   return (
     <section
       id='resume'
-      className={`py-20 bg-white dark:bg-gray-900 ${
-        isStandalone ? 'min-h-screen' : ''
-      }`}
+      className={`py-20 bg-transparent ${isStandalone ? 'min-h-screen' : ''}`}
     >
       <div className='container mx-auto px-6'>
         {/* Back button for standalone page */}
