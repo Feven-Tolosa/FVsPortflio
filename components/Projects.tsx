@@ -9,6 +9,14 @@ export default function Projects() {
 
   const projects = [
     {
+      title: 'Gosple Truth Ethiopia',
+      description: 'church website',
+      image: '/images/project10.png',
+      link: 'https://gospel-truth-ethiopia.vercel.app/',
+      tags: ['Next.js', 'Talwind', 'YouTube API Intgration'],
+      category: 'web',
+    },
+    {
       title: 'Selam Markets',
       description:
         'An e-commerce platform for local vendors to sell their products online and for customers to discover and purchase a local wide variety of goods',
