@@ -1,28 +1,27 @@
-// components/Navbar.tsx
 'use client'
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useTheme } from './ThemeProvider'
+import { Sun, Moon, Menu, X } from 'lucide-react'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const { theme, toggle } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-
-      // Update active section based on scroll position
-      const sections = ['about', 'skills', 'projects', 'resume', 'contact']
-      const scrollPosition = window.scrollY + 100
+      setIsScrolled(window.scrollY > 20)
+      const sections = ['about', 'skills', 'projects', 'contact']
+      const scrollPosition = window.scrollY + 150
 
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
           const offsetTop = element.offsetTop
           const offsetBottom = offsetTop + element.offsetHeight
-
           if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
             setActiveSection(section)
             break
@@ -35,25 +34,19 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // components/Navbar.tsx (update the navItems)
   const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Resume', href: '/resume' }, // Link to the resume page
+    { name: 'Resume', href: '/resume' },
   ]
 
-  // Update the scrollToSection function to handle both hash links and page links
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
-      const sectionId = href.replace('#', '')
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
+      const element = document.getElementById(href.replace('#', ''))
+      if (element) element.scrollIntoView({ behavior: 'smooth' })
     } else {
-      // This is a page link, let Next.js handle it normally
       window.location.href = href
     }
     setIsMobileMenuOpen(false)
@@ -61,97 +54,92 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md py-2'
-          : 'bg-transparent py-4'
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled ? 'glass-nav py-3' : 'py-5 bg-transparent'
       }`}
     >
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between items-center'>
-          <Link
-            href='/'
-            className='text-xl font-bold text-purple-600 dark:text-purple-400'
-          >
-            Feven.dev
-          </Link>
+      <div className='max-w-7xl mx-auto px-6 flex justify-between items-center'>
+        <Link href='/' className='text-xl font-bold gradient-text tracking-tight'>
+          feven<span className='text-[var(--text-tertiary)]'>.dev</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className='hidden md:flex space-x-8'>
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection(item.href)
-                }}
-                className={`transition-colors ${
-                  activeSection === item.href.replace('#', '')
-                    ? 'text-purple-600 dark:text-purple-400 font-medium'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className='md:hidden'>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className='text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 focus:outline-none'
+        {/* Desktop Nav */}
+        <div className='hidden md:flex items-center gap-1'>
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection(item.href)
+              }}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                activeSection === item.href.replace('#', '')
+                  ? 'gradient-text bg-[rgba(168,85,247,0.08)]'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[rgba(168,85,247,0.05)]'
+              }`}
             >
-              <svg
-                className='h-6 w-6'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M6 18L18 6M6 6l12 12'
-                  />
-                ) : (
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M4 6h16M4 12h16M4 18h16'
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
+              {item.name}
+            </Link>
+          ))}
+
+          <button
+            onClick={toggle}
+            className='ml-3 p-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:border-[rgba(168,85,247,0.3)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)]'
+            aria-label='Toggle theme'
+          >
+            {theme === 'dark' ? (
+              <Sun size={16} className='text-amber-400' />
+            ) : (
+              <Moon size={16} className='text-purple-500' />
+            )}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className='md:hidden bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-4 py-2'>
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection(item.href)
-                }}
-                className={`block px-4 py-2 transition-colors ${
-                  activeSection === item.href.replace('#', '')
-                    ? 'text-purple-600 dark:text-purple-400 font-medium bg-purple-50 dark:bg-purple-900/20'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        )}
+        {/* Mobile Controls */}
+        <div className='flex md:hidden items-center gap-2'>
+          <button
+            onClick={toggle}
+            className='p-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border-glass)]'
+            aria-label='Toggle theme'
+          >
+            {theme === 'dark' ? (
+              <Sun size={16} className='text-amber-400' />
+            ) : (
+              <Moon size={16} className='text-purple-500' />
+            )}
+          </button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className='p-2 rounded-lg text-[var(--text-secondary)]'
+          >
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className='md:hidden mx-4 mt-3 rounded-2xl glass-card p-4 space-y-1'>
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection(item.href)
+              }}
+              className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                activeSection === item.href.replace('#', '')
+                  ? 'gradient-text bg-[rgba(168,85,247,0.08)]'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   )
 }

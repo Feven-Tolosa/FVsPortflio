@@ -2,23 +2,25 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import {
+  ArrowLeft,
+  Download,
+  Briefcase,
+  GraduationCap,
+  Code,
+  MapPin,
+} from 'lucide-react'
 
 interface ResumeProps {
   isStandalone?: boolean
 }
 
 export default function Resume({ isStandalone = false }: ResumeProps) {
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  }
-
   const experiences = [
     {
       title: 'Full-Stack Developer',
       company: 'Information Network Security Agency',
-      period: 'Jul 2025 - Oct 20 2025',
+      period: 'Jul 2025 - Oct 2025',
       description: 'Working on security-focused web applications and systems.',
       location: 'Ethiopia',
     },
@@ -43,7 +45,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
       company: 'Evangeli Networks',
       period: 'Apr 2024 - Oct 2024',
       description:
-        'Built and enhanced full-stack applications using React for the front end. Integrated RESTful APIs and managed state efficiently to ensure smooth data flow and real-time updates across the application. Created dynamic and responsive user interfaces to improve user engagement and experience.',
+        'Built and enhanced full-stack applications using React for the front end. Integrated RESTful APIs and managed state efficiently to ensure smooth data flow and real-time updates across the application.',
       location: 'Remote USA',
     },
   ]
@@ -54,7 +56,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
       company: 'Information Network Security Administration',
       period: 'Aug 2025 - Present',
       description:
-        'Developed a furniture e-commerce platform using Next.js, Node.js and MySQL, handling both frontend product displays and backend APIs. Implemented secure user authentication with Firebase and Google login, including bot protection using reCAPTCHA. Integrated Stripe payment processing with fraud detection and data encryption.',
+        'Developed a furniture e-commerce platform using Next.js, Node.js and MySQL. Implemented secure user authentication with Firebase and Google login, including bot protection using reCAPTCHA. Integrated Stripe payment processing with fraud detection and data encryption.',
       location: 'Addis Ababa',
     },
     {
@@ -62,7 +64,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
       company: 'Debo Engineering',
       period: 'Dec 2024 - Jan 2025',
       description:
-        'Designed and developed a full-stack Photo Studio Application using React.js for the front end and MySQL for database management, enabling efficient storage and retrieval of user data and media. Implemented features such as image uploads, user authentication, and gallery management to create a seamless user experience. Ensured responsive design and optimized performance, integrating RESTful APIs for smooth communication between the front end and back end.',
+        'Designed and developed a full-stack Photo Studio Application using React.js and MySQL. Implemented features such as image uploads, user authentication, and gallery management.',
       location: 'Remote Jimma',
     },
   ]
@@ -100,29 +102,16 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
   return (
     <section
       id='resume'
-      className={`py-20 bg-transparent ${isStandalone ? 'min-h-screen' : ''}`}
+      className={`section-padding ${isStandalone ? 'min-h-screen pt-28' : ''}`}
     >
       <div className='container mx-auto px-6'>
-        {/* Back button for standalone page */}
         {isStandalone && (
           <div className='mb-8'>
             <Link
               href='/'
-              className='inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium'
+              className='inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-purple-500 font-medium transition-colors'
             >
-              <svg
-                className='w-5 h-5 mr-2'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M10 19l-7-7m0 0l7-7m-7 7h18'
-                ></path>
-              </svg>
+              <ArrowLeft size={18} />
               Back to Home
             </Link>
           </div>
@@ -130,73 +119,56 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
 
         <motion.div
           className='text-center mb-16'
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className='text-purple-600 dark:text-purple-400 font-medium'>
+          <span className='tag-pill px-4 py-1.5 rounded-full text-xs font-medium inline-block mb-4'>
             My Resume
           </span>
-          <h2 className='text-4xl font-bold mt-2 mb-4 text-gray-800 dark:text-white'>
-            Experience & Education
+          <h2 className='text-4xl sm:text-5xl font-bold mb-4'>
+            Experience & <span className='gradient-text'>Education</span>
           </h2>
-          <p className='text-gray-600 dark:text-gray-400 max-w-2xl mx-auto'>
-            Here is a summary of my professional experience and education
-          </p>
         </motion.div>
 
-        {/* Skills Section */}
+        {/* Skills */}
         <motion.div
           className='mb-16'
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className='text-2xl font-semibold mb-8 text-gray-800 dark:text-white flex items-center'>
-            <span className='w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3'>
-              <svg
-                className='w-4 h-4 text-purple-600 dark:text-purple-400'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M13 10V3L4 14h7v7l9-11h-7z'
-                ></path>
-              </svg>
+          <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
+            <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+              <Code size={18} className='text-white' />
             </span>
             Technical Skills
           </h3>
-
           <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className='bg-gray-50 dark:bg-gray-800 p-4 rounded-lg'
-                variants={fadeIn}
-                initial='initial'
-                whileInView='animate'
+                className='glass-card rounded-xl p-4'
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
                 <div className='flex justify-between mb-2'>
-                  <span className='font-medium text-gray-800 dark:text-gray-200'>
+                  <span className='font-medium text-sm text-[var(--text-primary)]'>
                     {skill.name}
                   </span>
-                  <span className='text-gray-600 dark:text-gray-400'>
+                  <span className='text-xs text-[var(--text-tertiary)]'>
                     {skill.level}%
                   </span>
                 </div>
-                <div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2'>
+                <div className='w-full bg-[var(--input-bg)] rounded-full h-1.5'>
                   <div
-                    className='h-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600'
+                    className='h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500'
                     style={{ width: `${skill.level}%` }}
-                  ></div>
+                  />
                 </div>
               </motion.div>
             ))}
@@ -206,52 +178,43 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
         <div className='grid lg:grid-cols-2 gap-12'>
           {/* Experience */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className='text-2xl font-semibold mb-8 text-gray-800 dark:text-white flex items-center'>
-              <span className='w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3'>
-                <svg
-                  className='w-4 h-4 text-purple-600 dark:text-purple-400'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
-                  ></path>
-                </svg>
+            <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
+              <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+                <Briefcase size={18} className='text-white' />
               </span>
               Work Experience
             </h3>
-
-            <div className='space-y-8'>
+            <div className='space-y-6'>
               {experiences.map((exp, index) => (
                 <motion.div
                   key={index}
-                  className='relative pl-10 before:absolute before:left-0 before:top-2 before:w-6 before:h-6 before:bg-purple-600 before:rounded-full'
-                  variants={fadeIn}
-                  initial='initial'
-                  whileInView='animate'
+                  className='glass-card rounded-2xl p-6 relative'
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <div className='bg-gray-50 dark:bg-gray-800 p-6 rounded-xl'>
-                    <h4 className='font-semibold text-lg text-gray-800 dark:text-white'>
+                  <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full' />
+                  <div className='pl-4'>
+                    <h4 className='font-semibold text-lg text-[var(--text-primary)]'>
                       {exp.title}
                     </h4>
-                    <p className='text-purple-600 dark:text-purple-400 mb-2'>
-                      {exp.company} • {exp.period}
+                    <p className='text-purple-500 text-sm font-medium mb-1'>
+                      {exp.company}
                     </p>
-                    <p className='text-gray-500 dark:text-gray-400 text-sm mb-3'>
-                      {exp.location}
-                    </p>
-                    <p className='text-gray-600 dark:text-gray-400'>
+                    <div className='flex items-center gap-3 text-xs text-[var(--text-tertiary)] mb-3'>
+                      <span>{exp.period}</span>
+                      <span className='flex items-center gap-1'>
+                        <MapPin size={12} />
+                        {exp.location}
+                      </span>
+                    </div>
+                    <p className='text-[var(--text-secondary)] text-sm leading-relaxed'>
                       {exp.description}
                     </p>
                   </div>
@@ -262,58 +225,38 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
 
           {/* Education & Projects */}
           <div>
-            {/* Education */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className='mb-12'
             >
-              <h3 className='text-2xl font-semibold mb-8 text-gray-800 dark:text-white flex items-center'>
-                <span className='w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3'>
-                  <svg
-                    className='w-4 h-4 text-purple-600 dark:text-purple-400'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M12 14l9-5-9-5-9 5 9 5z'
-                    ></path>
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M12 14l9-5-9-5-9 5 9 5zm0 0v6'
-                    ></path>
-                  </svg>
+              <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
+                <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+                  <GraduationCap size={18} className='text-white' />
                 </span>
                 Education
               </h3>
-
-              <div className='space-y-8'>
+              <div className='space-y-6'>
                 {education.map((edu, index) => (
                   <motion.div
                     key={index}
-                    className='relative pl-10 before:absolute before:left-0 before:top-2 before:w-6 before:h-6 before:bg-purple-600 before:rounded-full'
-                    variants={fadeIn}
-                    initial='initial'
-                    whileInView='animate'
+                    className='glass-card rounded-2xl p-6 relative'
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    <div className='bg-gray-50 dark:bg-gray-800 p-6 rounded-xl'>
-                      <h4 className='font-semibold text-lg text-gray-800 dark:text-white'>
+                    <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full' />
+                    <div className='pl-4'>
+                      <h4 className='font-semibold text-lg text-[var(--text-primary)]'>
                         {edu.degree}
                       </h4>
-                      <p className='text-purple-600 dark:text-purple-400 mb-2'>
-                        {edu.institution} • {edu.period}
+                      <p className='text-purple-500 text-sm font-medium mb-1'>
+                        {edu.institution} &bull; {edu.period}
                       </p>
-                      <p className='text-gray-600 dark:text-gray-400'>
+                      <p className='text-[var(--text-secondary)] text-sm'>
                         {edu.description}
                       </p>
                     </div>
@@ -322,54 +265,44 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
               </div>
             </motion.div>
 
-            {/* Projects */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className='text-2xl font-semibold mb-8 text-gray-800 dark:text-white flex items-center'>
-                <span className='w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3'>
-                  <svg
-                    className='w-4 h-4 text-purple-600 dark:text-purple-400'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'
-                    ></path>
-                  </svg>
+              <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
+                <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+                  <Code size={18} className='text-white' />
                 </span>
                 Key Projects
               </h3>
-
-              <div className='space-y-8'>
+              <div className='space-y-6'>
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
-                    className='relative pl-10 before:absolute before:left-0 before:top-2 before:w-6 before:h-6 before:bg-purple-600 before:rounded-full'
-                    variants={fadeIn}
-                    initial='initial'
-                    whileInView='animate'
+                    className='glass-card rounded-2xl p-6 relative'
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    <div className='bg-gray-50 dark:bg-gray-800 p-6 rounded-xl'>
-                      <h4 className='font-semibold text-lg text-gray-800 dark:text-white'>
+                    <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full' />
+                    <div className='pl-4'>
+                      <h4 className='font-semibold text-lg text-[var(--text-primary)]'>
                         {project.title}
                       </h4>
-                      <p className='text-purple-600 dark:text-purple-400 mb-2'>
-                        {project.company} • {project.period}
+                      <p className='text-purple-500 text-sm font-medium mb-1'>
+                        {project.company}
                       </p>
-                      <p className='text-gray-500 dark:text-gray-400 text-sm mb-3'>
-                        {project.location}
-                      </p>
-                      <p className='text-gray-600 dark:text-gray-400'>
+                      <div className='flex items-center gap-3 text-xs text-[var(--text-tertiary)] mb-3'>
+                        <span>{project.period}</span>
+                        <span className='flex items-center gap-1'>
+                          <MapPin size={12} />
+                          {project.location}
+                        </span>
+                      </div>
+                      <p className='text-[var(--text-secondary)] text-sm leading-relaxed'>
                         {project.description}
                       </p>
                     </div>
@@ -380,33 +313,20 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
           </div>
         </div>
 
-        {/* Download button */}
         <motion.div
           className='text-center mt-16'
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         >
           <a
             href='/Feven_Tolosa_Resume.pdf'
             download='Feven_Tolosa_Resume.pdf'
-            className='inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30'
+            className='inline-flex items-center gap-2 gradient-btn px-8 py-3.5 rounded-xl font-medium'
           >
+            <Download size={18} />
             Download Resume
-            <svg
-              className='w-5 h-5 ml-2'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'
-              ></path>
-            </svg>
           </a>
         </motion.div>
       </div>

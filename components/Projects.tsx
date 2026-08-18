@@ -1,136 +1,194 @@
-// components/Projects.tsx
 'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { ExternalLink, Github } from 'lucide-react'
+import { useTilt } from './useTilt'
+
+function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+  const { ref, handleMouseMove, handleMouseLeave } = useTilt({ maxTilt: 10, scale: 1.03 })
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className='glass-card rounded-2xl overflow-hidden group'
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      {/* Image */}
+      <div className='relative overflow-hidden h-52'>
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={500}
+          height={300}
+          className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-700'
+        />
+        {/* Hover overlay */}
+        <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-5'>
+          <div className='flex gap-2 flex-wrap'>
+            {project.tags.map((tag, i) => (
+              <span
+                key={i}
+                className='text-xs px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-sm text-white border border-white/10'
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className='p-6'>
+        <h3 className='font-semibold text-lg mb-2 text-[var(--text-primary)] group-hover:text-purple-500 transition-colors'>
+          {project.title}
+        </h3>
+        <p className='text-[var(--text-secondary)] text-sm mb-5 leading-relaxed line-clamp-2'>
+          {project.description}
+        </p>
+        <a
+          href={project.link}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='inline-flex items-center gap-2 text-sm font-medium gradient-text hover:opacity-80 transition-opacity'
+        >
+          View Project
+          <ExternalLink size={14} />
+        </a>
+      </div>
+    </motion.div>
+  )
+}
+
+const projects = [
+  {
+    title: 'Selam Markets',
+    description: 'An e-commerce platform for local vendors to sell their products online and for customers to discover and purchase a wide variety of goods.',
+    image: '/images/project9.png',
+    link: 'https://selam-markets.vercel.app/',
+    tags: ['Next.js', 'Supabase', 'Tailwind'],
+    category: 'web',
+  },
+  {
+    title: 'Security System',
+    description: 'A comprehensive security management platform with real-time monitoring and incident tracking.',
+    image: '/images/project-6.png',
+    link: 'https://security-system-ashen.vercel.app/',
+    tags: ['Next.js', 'React', 'Tailwind'],
+    category: 'web',
+  },
+  {
+    title: 'EthioGard.com',
+    description: 'Website for agricultural services and products connecting farmers with markets.',
+    image: '/images/project-7.png',
+    link: 'https://waf-theta.vercel.app/',
+    tags: ['Next.js', 'Tailwind', 'React'],
+    category: 'web',
+  },
+  {
+    title: 'Apple.com Clone',
+    description: 'A faithful recreation of the Apple website with modern design and animations.',
+    image: '/images/project-1.jpg',
+    link: 'https://flourishing-gecko-ea3c57.netlify.app/',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    category: 'clone',
+  },
+  {
+    title: 'Netflix Clone',
+    description: 'Streaming platform interface with movie catalog and search functionality.',
+    image: '/images/project-2.jpg',
+    link: 'https://spectacular-faun-e28c3b.netlify.app/',
+    tags: ['React', 'Firebase', 'API'],
+    category: 'clone',
+  },
+  {
+    title: 'Mercy Photography',
+    description: 'Portfolio website for a photography studio with gallery and booking features.',
+    image: '/images/project-5.jpg',
+    link: 'https://mercyphotostudio.netlify.app/',
+    tags: ['JavaScript', 'HTML', 'CSS'],
+    category: 'web',
+  },
+  {
+    title: 'F3N Shopping',
+    description: 'E-commerce shopping platform with modern UI and product management.',
+    image: '/images/project-4.png',
+    link: 'https://f3n-shopping.netlify.app/',
+    tags: ['React', 'Node.js', 'MongoDB'],
+    category: 'web',
+  },
+  {
+    title: 'Influencer Market',
+    description: 'A marketplace connecting influencers with brands for collaborations.',
+    image: '/images/project-8.png',
+    link: 'https://famous-two.vercel.app/',
+    tags: ['Next.js', 'React', 'Tailwind'],
+    category: 'web',
+  },
+  {
+    title: 'JUSCDC Platform',
+    description: 'Career Development Club website for student career resources.',
+    image: '/images/project-9.png',
+    link: 'https://juscdc-platform.vercel.app/',
+    tags: ['Next.js', 'Supabase', 'Tailwind'],
+    category: 'web',
+  },
+]
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all')
 
-  const projects = [
-    // {
-    //   title: 'Gosple Truth Ethiopia',
-    //   description: 'church website',
-    //   image: '/images/project10.png',
-    //   link: 'https://gospel-truth-ethiopia.vercel.app/',
-    //   tags: ['Next.js', 'Talwind', 'YouTube API Intgration'],
-    //   category: 'web',
-    // },
-    {
-      title: 'Selam Markets',
-      description:
-        'An e-commerce platform for local vendors to sell their products online and for customers to discover and purchase a local wide variety of goods',
-      image: '/images/project9.png',
-      link: 'https://selam-markets.vercel.app/',
-      tags: ['Next.js', 'Supabase', 'Tailwind'],
-      category: 'web',
-    },
-    {
-      title: 'Security System',
-      description:
-        'A comprehensive security management platform with real-time monitoring',
-      image: '/images/project-6.png',
-      link: 'https://security-system-ashen.vercel.app/',
-      tags: ['Next.js', 'React', 'Tailwind'],
-      category: 'web',
-    },
-    {
-      title: 'EthioGard.com',
-      description: 'Website for agricultural services and products',
-      image: '/images/project-7.png',
-      link: 'https://waf-theta.vercel.app/',
-      tags: ['Next.js', 'Tailwind', 'React'],
-      category: 'web',
-    },
-    {
-      title: 'Apple.com Clone',
-      description:
-        'A faithful recreation of the Apple website with modern design',
-      image: '/images/project-1.jpg',
-      link: 'https://flourishing-gecko-ea3c57.netlify.app/',
-      tags: ['HTML', 'CSS', 'JavaScript'],
-      category: 'clone',
-    },
-    {
-      title: 'Netflix Clone',
-      description: 'Streaming platform interface with movie catalog',
-      image: '/images/project-2.jpg',
-      link: 'https://spectacular-faun-e28c3b.netlify.app/',
-      tags: ['React', 'Firebase', 'API'],
-      category: 'clone',
-    },
-    {
-      title: 'Mercy Photography',
-      description: 'Portfolio website for a photography studio',
-      image: '/images/project-5.jpg',
-      link: 'https://mercyphotostudio.netlify.app/',
-      tags: ['JavaScript', 'HTML', 'CSS'],
-      category: 'web',
-    },
-    {
-      title: 'F3N Shopping',
-      description: 'E-commerce shopping platform with modern UI',
-      image: '/images/project-4.png',
-      link: 'https://f3n-shopping.netlify.app/',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      category: 'web',
-    },
-    {
-      title: 'Influencer Market',
-      description: 'A marketplace connecting influencers with brands',
-      image: '/images/project-8.png',
-      link: 'https://famous-two.vercel.app/',
-      tags: ['Next.js', 'React', 'Talwind'],
-      category: 'web',
-    },
-    {
-      title: 'JUSCDC platform',
-      description: 'Career Development Club website',
-      image: '/images/project-9.png',
-      link: 'https://juscdc-platform.vercel.app/',
-      tags: ['Next.js', 'Supabase', 'Talwind'],
-      category: 'web',
-    },
-  ]
-
   const filters = [
     { name: 'All', value: 'all' },
-    { name: 'Web Applications', value: 'web' },
+    { name: 'Web Apps', value: 'web' },
     { name: 'Clones', value: 'clone' },
   ]
 
   const filteredProjects =
     activeFilter === 'all'
       ? projects
-      : projects.filter((project) => project.category === activeFilter)
+      : projects.filter((p) => p.category === activeFilter)
 
   return (
-    <section id='projects' className='py-20 bg-transparent'>
-      <div className='container mx-auto px-6'>
-        <div className='text-center mb-16'>
-          <span className='text-purple-600 dark:text-purple-400 font-medium'>
+    <section id='projects' className='section-padding relative'>
+      <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-purple-600/5 rounded-full blur-[120px]' />
+
+      <div className='container mx-auto px-6 relative z-10'>
+        <motion.div
+          className='text-center mb-16'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className='tag-pill px-4 py-1.5 rounded-full text-xs font-medium inline-block mb-4'>
             My Work
           </span>
-          <h2 className='text-4xl font-bold mt-2 mb-4 text-gray-800 dark:text-white'>
-            Featured Projects
+          <h2 className='text-4xl sm:text-5xl font-bold mb-4'>
+            Featured <span className='gradient-text'>Projects</span>
           </h2>
-          <p className='text-gray-600 dark:text-gray-400 max-w-2xl mx-auto'>
-            Here are some of my recent projects that showcase my skills and
-            expertise
+          <p className='text-[var(--text-secondary)] max-w-2xl mx-auto'>
+            A showcase of my recent work demonstrating my skills and expertise
           </p>
-        </div>
+        </motion.div>
 
-        {/* Filter buttons */}
-        <div className='flex justify-center mb-12 '>
-          <div className='inline-flex rounded-lg border border-gray-200 dark:border-gray-700 p-1'>
+        {/* Filters */}
+        <div className='flex justify-center mb-12'>
+          <div className='inline-flex rounded-xl bg-[var(--bg-glass)] border border-[var(--border-glass)] backdrop-blur-md p-1'>
             {filters.map((filter) => (
               <button
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
+                className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 ${
                   activeFilter === filter.value
-                    ? 'bg-purple-600 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400'
+                    ? 'gradient-btn shadow-md'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {filter.name}
@@ -139,90 +197,30 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Projects grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white bg-linear-to-b from-gray-950 via-gray-900 to-black'>
+        {/* Grid */}
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {filteredProjects.map((project, index) => (
-            <div
-              key={index}
-              className='group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-white dark:bg-gray-800'
-            >
-              <div className='relative overflow-hidden'>
-                <div className='h-48 overflow-hidden'>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={400}
-                    height={250}
-                    className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-                  />
-                </div>
-                <div className='absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4'>
-                  <div className='flex space-x-2'>
-                    {project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className='text-xs bg-purple-600 text-white px-2 py-1 rounded'
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className='p-6'>
-                <h3 className='font-semibold text-xl mb-2 text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors'>
-                  {project.title}
-                </h3>
-                <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                  {project.description}
-                </p>
-                <a
-                  href={project.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium'
-                >
-                  View Project
-                  <svg
-                    className='w-4 h-4 ml-1'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
 
-        <div className='text-center mt-12'>
+        <motion.div
+          className='text-center mt-14'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <a
             href='https://github.com/Feven-Tolosa'
             target='_blank'
             rel='noopener noreferrer'
-            className='inline-flex items-center px-6 py-3 border border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-600 hover:text-white rounded-lg transition-all duration-300 font-medium'
+            className='inline-flex items-center gap-2 outline-btn px-8 py-3.5 rounded-xl font-medium'
           >
+            <Github size={18} />
             View More on GitHub
-            <svg
-              className='w-5 h-5 ml-2'
-              fill='currentColor'
-              viewBox='0 0 20 20'
-            >
-              <path
-                fillRule='evenodd'
-                d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                clipRule='evenodd'
-              ></path>
-            </svg>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

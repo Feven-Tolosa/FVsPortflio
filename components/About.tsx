@@ -1,93 +1,105 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { User, Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
+
 export default function About() {
   const aboutInfo = [
-    { label: 'Name', value: 'Feven Tolosa', icon: '👩‍💻' },
-    { label: 'Address', value: 'Addis Ababa, Ethiopia', icon: '📍' },
-    { label: 'Email', value: 'feventolosa14@gmail.com', icon: '✉️' },
-    { label: 'Phone', value: '+251-939-733-939', icon: '📱' },
+    { label: 'Name', value: 'Feven Tolosa', icon: User },
+    { label: 'Location', value: 'Addis Ababa, Ethiopia', icon: MapPin },
+    { label: 'Email', value: 'feventolosa14@gmail.com', icon: Mail },
+    { label: 'Phone', value: '+251-939-733-939', icon: Phone },
   ]
 
   return (
-    <section
-      id='about'
-      className='py-20 bg-transparent from-gray-950 via-gray-900 to-black relative overflow-hidden'
-    >
-      {/* Background pattern */}
-      <div className='absolute top-0 left-0 w-full h-full opacity-5'>
-        <div className='absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob'></div>
-        <div className='absolute bottom-20 right-10 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000'></div>
-      </div>
+    <section id='about' className='section-padding relative'>
+      {/* Background glow */}
+      <div className='absolute top-1/2 left-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[120px] -translate-y-1/2' />
 
       <div className='container mx-auto px-6 relative z-10'>
-        <div className='text-center mb-16'>
-          <span className='text-purple-600 dark:text-purple-400 font-medium'>
+        <motion.div
+          className='text-center mb-16'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className='tag-pill px-4 py-1.5 rounded-full text-xs font-medium inline-block mb-4'>
             About Me
           </span>
-          <h2 className='text-4xl font-bold mt-2 mb-4 text-gray-800 dark:text-white'>
-            Get to Know Me
+          <h2 className='text-4xl sm:text-5xl font-bold mb-4'>
+            Get to <span className='gradient-text'>Know Me</span>
           </h2>
-          <p className='text-gray-600 dark:text-gray-400 max-w-2xl mx-auto'>
-            I am a passionate full-stack developer with expertise in creating
-            modern web applications
+          <p className='text-[var(--text-secondary)] max-w-2xl mx-auto'>
+            A passionate developer dedicated to building exceptional digital
+            experiences
           </p>
-        </div>
+        </motion.div>
 
-        <div className='items-center'>
-          <h3 className='text-2xl font-semibold mb-6 text-gray-800 dark:text-white'>
-            Who I Am
-          </h3>
-          <p className='text-gray-600 dark:text-gray-400 mb-6'>
-            I am a dedicated full-stack developer based in Ethiopia,
-            specializing in building exceptional digital experiences. With a
-            strong foundation in both front-end and back-end technologies, I
-            create solutions that are both visually appealing and highly
-            functional.
-          </p>
-
-          <p className='text-gray-600 dark:text-gray-400 mb-8'>
-            My approach combines creative design with technical expertise to
-            deliver user-friendly applications that meet both business goals and
-            user needs. I am constantly learning and adapting to new
-            technologies to stay at the forefront of web development.
-          </p>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-8'>
-            {aboutInfo.map((item, index) => (
-              <div
-                key={index}
-                className='flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg'
-              >
-                <span className='text-2xl mr-3'>{item.icon}</span>
-                <div>
-                  <span className='block font-medium text-gray-700 dark:text-gray-300'>
-                    {item.label}
-                  </span>
-                  <span className='text-gray-600 dark:text-gray-400'>
-                    {item.value}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <a
-            href='#contact'
-            className='inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-purple-500/30'
+        <div className='grid lg:grid-cols-2 gap-12 items-start'>
+          {/* Bio */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            Lets Connect
-            <svg
-              className='w-5 h-5 ml-2'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M14 5l7 7m0 0l-7 7m7-7H3'
-              ></path>
-            </svg>
-          </a>
+            <div className='glass-card rounded-2xl p-8'>
+              <h3 className='text-2xl font-semibold mb-6 gradient-text'>
+                Who I Am
+              </h3>
+              <div className='space-y-4 text-[var(--text-secondary)] leading-relaxed'>
+                <p>
+                  I am a dedicated full-stack developer based in Ethiopia,
+                  specializing in building exceptional digital experiences. With a
+                  strong foundation in both front-end and back-end technologies, I
+                  create solutions that are visually appealing and highly
+                  functional.
+                </p>
+                <p>
+                  My approach combines creative design with technical expertise to
+                  deliver user-friendly applications that meet both business goals
+                  and user needs. I am constantly learning and adapting to new
+                  technologies to stay at the forefront of web development.
+                </p>
+              </div>
+              <a
+                href='#contact'
+                className='inline-flex items-center gap-2 mt-8 gradient-btn px-6 py-3 rounded-xl font-medium text-sm'
+              >
+                Let&apos;s Connect
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Info Grid */}
+          <motion.div
+            className='grid grid-cols-1 sm:grid-cols-2 gap-4'
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {aboutInfo.map((item, index) => (
+              <motion.div
+                key={index}
+                className='glass-card rounded-2xl p-6 group cursor-default'
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform'>
+                  <item.icon size={20} className='text-purple-500' />
+                </div>
+                <span className='block text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-1'>
+                  {item.label}
+                </span>
+                <span className='text-[var(--text-primary)] font-medium text-sm'>
+                  {item.value}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
