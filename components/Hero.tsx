@@ -33,10 +33,10 @@ export default function Hero() {
           setDisplayText(
             isDeleting
               ? currentRole.substring(0, displayText.length - 1)
-              : currentRole.substring(0, displayText.length + 1)
+              : currentRole.substring(0, displayText.length + 1),
           )
         },
-        isDeleting ? 50 : 100
+        isDeleting ? 50 : 100,
       )
     }
     return () => clearTimeout(timeout)
@@ -47,10 +47,10 @@ export default function Hero() {
       id='home'
       className='min-h-screen flex items-center relative overflow-hidden pt-20'
     >
-      {/* Ambient glow blobs — muted blue/gray */}
-      <div className='absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-slate-500/10 rounded-full blur-[120px]' />
-      <div className='absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px]' />
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-slate-400/5 rounded-full blur-[150px]' />
+      {/* Ambient glow blobs */}
+      <div className='absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[120px]' />
+      <div className='absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-pink-600/10 rounded-full blur-[120px]' />
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]' />
 
       <div className='container mx-auto px-6 relative z-10'>
         <div className='flex flex-col lg:flex-row items-center justify-between gap-16'>
@@ -61,7 +61,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className='inline-block px-4 py-1.5 rounded-full text-xs font-medium tag-pill mb-6'>
+              <span className='rounded-full border-2 border-gray-600 inline-block px-4 py-1.5 text-xs font-medium tag-pill mb-6'>
                 Available for opportunities
               </span>
             </motion.div>
@@ -72,8 +72,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Hi, I&apos;m{' '}
-              <span className='gradient-text'>Feven Tolosa</span>
+              Hi, I&apos;m <span className='gradient-text'>Feven Tolosa</span>
             </motion.h1>
 
             <motion.div
@@ -83,10 +82,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <span className='text-[var(--text-secondary)]'>I&apos;m a </span>
-              <span className='gradient-text'>
-                {displayText}
-              </span>
-              <span className='inline-block w-[3px] h-[1em] bg-[var(--accent)] ml-1 animate-pulse' />
+              <span className='gradient-text'>{displayText}</span>
+              <span className='inline-block w-[3px] h-[1em] bg-purple-500 ml-1 animate-pulse' />
             </motion.div>
 
             <motion.p
@@ -154,7 +151,7 @@ export default function Hero() {
           >
             <div className='relative'>
               {/* Glow ring */}
-              <div className='absolute -inset-4 bg-gradient-to-r from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-full opacity-15 blur-xl animate-pulse-glow' />
+              <div className='absolute -inset-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-20 blur-xl animate-pulse-glow' />
 
               {/* Image container */}
               <div className='relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-[var(--border-glass)] glass-card p-2'>
@@ -170,11 +167,15 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating badges */}
+              {/* Floating tech badges */}
               <motion.div
                 className='absolute -top-2 -right-2 px-4 py-2 rounded-xl glass-card text-xs font-semibold gradient-text'
                 animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               >
                 React & Next.js
               </motion.div>
@@ -203,9 +204,9 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <div className='w-6 h-10 border-2 border-[var(--text-tertiary)] rounded-full flex justify-center opacity-40'>
+        <div className='w-6 h-10 border-2 border-[var(--text-tertiary)] rounded-full flex justify-center opacity-50'>
           <motion.div
-            className='w-1.5 h-3 bg-[var(--accent)] rounded-full mt-2'
+            className='w-1.5 h-3 bg-purple-500 rounded-full mt-2'
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           />
