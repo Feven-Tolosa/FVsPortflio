@@ -109,7 +109,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
           <div className='mb-8'>
             <Link
               href='/'
-              className='inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-purple-500 font-medium transition-colors'
+              className='inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium transition-colors'
             >
               <ArrowLeft size={18} />
               Back to Home
@@ -141,7 +141,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
           transition={{ duration: 0.6 }}
         >
           <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
-            <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+            <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center'>
               <Code size={18} className='text-white' />
             </span>
             Technical Skills
@@ -166,7 +166,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
                 </div>
                 <div className='w-full bg-[var(--input-bg)] rounded-full h-1.5'>
                   <div
-                    className='h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500'
+                    className='h-1.5 rounded-full bg-gradient-to-r from-slate-400 to-slate-500 dark:from-slate-500 dark:to-slate-600'
                     style={{ width: `${skill.level}%` }}
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
             transition={{ duration: 0.6 }}
           >
             <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
-              <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+              <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center'>
                 <Briefcase size={18} className='text-white' />
               </span>
               Work Experience
@@ -199,12 +199,12 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full' />
+                  <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-full' />
                   <div className='pl-4'>
                     <h4 className='font-semibold text-lg text-[var(--text-primary)]'>
                       {exp.title}
                     </h4>
-                    <p className='text-purple-500 text-sm font-medium mb-1'>
+                    <p className='text-[var(--accent)] text-sm font-medium mb-1'>
                       {exp.company}
                     </p>
                     <div className='flex items-center gap-3 text-xs text-[var(--text-tertiary)] mb-3'>
@@ -233,7 +233,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
               className='mb-12'
             >
               <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
-                <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+                <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center'>
                   <GraduationCap size={18} className='text-white' />
                 </span>
                 Education
@@ -248,12 +248,12 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full' />
+                    <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-full' />
                     <div className='pl-4'>
                       <h4 className='font-semibold text-lg text-[var(--text-primary)]'>
                         {edu.degree}
                       </h4>
-                      <p className='text-purple-500 text-sm font-medium mb-1'>
+                      <p className='text-[var(--accent)] text-sm font-medium mb-1'>
                         {edu.institution} &bull; {edu.period}
                       </p>
                       <p className='text-[var(--text-secondary)] text-sm'>
@@ -272,7 +272,7 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h3 className='text-2xl font-semibold mb-8 flex items-center gap-3'>
-                <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500 flex items-center justify-center'>
+                <span className='w-10 h-10 rounded-xl bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center'>
                   <Code size={18} className='text-white' />
                 </span>
                 Key Projects
@@ -287,12 +287,12 @@ export default function Resume({ isStandalone = false }: ResumeProps) {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full' />
+                    <div className='absolute top-6 left-0 w-1 h-12 bg-gradient-to-b from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-full' />
                     <div className='pl-4'>
                       <h4 className='font-semibold text-lg text-[var(--text-primary)]'>
                         {project.title}
                       </h4>
-                      <p className='text-purple-500 text-sm font-medium mb-1'>
+                      <p className='text-[var(--accent)] text-sm font-medium mb-1'>
                         {project.company}
                       </p>
                       <div className='flex items-center gap-3 text-xs text-[var(--text-tertiary)] mb-3'>

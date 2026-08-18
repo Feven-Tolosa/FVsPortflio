@@ -34,18 +34,11 @@ export default function ThemeProvider({
   useEffect(() => {
     if (!mounted) return
     document.documentElement.classList.toggle('dark', theme === 'dark')
+    document.documentElement.classList.toggle('light', theme === 'light')
     localStorage.setItem('theme', theme)
   }, [theme, mounted])
 
   const toggle = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
-
-  if (!mounted) {
-    return (
-      <html className='dark' suppressHydrationWarning>
-        <body>{children}</body>
-      </html>
-    )
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>

@@ -46,7 +46,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 
       {/* Content */}
       <div className='p-6'>
-        <h3 className='font-semibold text-lg mb-2 text-[var(--text-primary)] group-hover:text-purple-500 transition-colors'>
+        <h3 className='font-semibold text-lg mb-2 text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors'>
           {project.title}
         </h3>
         <p className='text-[var(--text-secondary)] text-sm mb-5 leading-relaxed line-clamp-2'>
@@ -157,7 +157,7 @@ export default function Projects() {
 
   return (
     <section id='projects' className='section-padding relative'>
-      <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-purple-600/5 rounded-full blur-[120px]' />
+      <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-slate-500/5 rounded-full blur-[120px]' />
 
       <div className='container mx-auto px-6 relative z-10'>
         <motion.div

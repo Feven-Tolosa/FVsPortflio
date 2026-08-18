@@ -24,7 +24,7 @@ export default function Footer() {
               href={social.href}
               target='_blank'
               rel='noopener noreferrer'
-              className='w-10 h-10 rounded-xl glass-card flex items-center justify-center text-[var(--text-tertiary)] hover:text-purple-500 hover:border-purple-500/30 transition-all duration-300'
+              className='w-10 h-10 rounded-xl glass-card flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-all duration-300'
               aria-label={social.label}
             >
               <social.icon size={16} />

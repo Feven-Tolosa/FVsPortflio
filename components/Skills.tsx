@@ -12,19 +12,23 @@ export default function Skills() {
   }, [])
 
   const skills = [
-    { name: 'HTML5', level: 95, color: 'from-orange-400 to-orange-500' },
-    { name: 'CSS3', level: 95, color: 'from-blue-400 to-blue-500' },
-    { name: 'JavaScript', level: 90, color: 'from-yellow-400 to-yellow-500' },
-    { name: 'React', level: 95, color: 'from-cyan-400 to-cyan-500' },
-    { name: 'Next.js', level: 85, color: 'from-gray-300 to-gray-400' },
-    { name: 'Node.js', level: 85, color: 'from-green-400 to-green-500' },
-    { name: 'Express', level: 90, color: 'from-indigo-400 to-indigo-500' },
-    { name: 'MySQL', level: 85, color: 'from-blue-300 to-blue-400' },
-    { name: 'Git & GitHub', level: 85, color: 'from-cyan-400 to-cyan-500' },
-    { name: 'Tailwind CSS', level: 90, color: 'from-sky-400 to-sky-500' },
-    { name: 'Supabase', level: 80, color: 'from-emerald-400 to-emerald-500' },
-    { name: 'React Native', level: 75, color: 'from-blue-500 to-blue-600' },
-    { name: 'TypeScript', level: 85, color: 'from-blue-500 to-blue-600' },
+    {
+      name: 'HTML5',
+      level: 95,
+      color: 'from-slate-500 to-slate-600 ',
+    },
+    { name: 'CSS3', level: 95, color: 'from-slate-500 to-slate-600' },
+    { name: 'JavaScript', level: 90, color: 'from-slate-500 to-slate-600' },
+    { name: 'React', level: 95, color: 'from-slate-500 to-slate-600' },
+    { name: 'Next.js', level: 85, color: 'from-slate-500 to-slate-600' },
+    { name: 'Node.js', level: 85, color: 'from-slate-500 to-slate-600' },
+    { name: 'Express', level: 90, color: 'from-slate-500 to-slate-600' },
+    { name: 'MySQL', level: 85, color: 'from-slate-500 to-slate-600' },
+    { name: 'Git & GitHub', level: 85, color: 'from-slate-500 to-slate-600' },
+    { name: 'Tailwind CSS', level: 90, color: 'from-slate-500 to-slate-600' },
+    { name: 'Supabase', level: 80, color: 'from-slate-500 to-slate-600' },
+    { name: 'React Native', level: 75, color: 'from-slate-500 to-slate-600' },
+    { name: 'TypeScript', level: 85, color: 'from-slate-500 to-slate-600' },
   ]
 
   const approaches = [
@@ -33,28 +37,27 @@ export default function Skills() {
       description:
         'I build applications that are fast, efficient, and optimized for the best user experience.',
       icon: Zap,
-      gradient: 'from-purple-500 to-violet-500',
+      gradient: 'from-slate-500 to-slate-600',
     },
     {
       title: 'Responsive Design',
       description:
         'Creating interfaces that work beautifully on all devices from mobile to desktop.',
       icon: Layout,
-      gradient: 'from-pink-500 to-rose-500',
+      gradient: 'from-slate-400 to-slate-500',
     },
     {
       title: 'Clean Code',
       description:
         'Writing maintainable, scalable code with best practices and modern patterns.',
       icon: Shield,
-      gradient: 'from-amber-500 to-orange-500',
+      gradient: 'from-slate-600 to-slate-700',
     },
   ]
 
   return (
     <section id='skills' className='section-padding relative overflow-hidden'>
-      {/* Background */}
-      <div className='absolute top-0 right-0 w-[500px] h-[500px] bg-pink-600/5 rounded-full blur-[120px]' />
+      <div className='absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px]' />
 
       <div className='container mx-auto px-6 relative z-10'>
         <motion.div

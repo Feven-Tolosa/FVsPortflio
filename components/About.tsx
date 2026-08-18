@@ -13,8 +13,7 @@ export default function About() {
 
   return (
     <section id='about' className='section-padding relative'>
-      {/* Background glow */}
-      <div className='absolute top-1/2 left-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[120px] -translate-y-1/2' />
+      <div className='absolute top-1/2 left-0 w-[400px] h-[400px] bg-slate-400/5 rounded-full blur-[120px] -translate-y-1/2' />
 
       <div className='container mx-auto px-6 relative z-10'>
         <motion.div
@@ -88,8 +87,8 @@ export default function About() {
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform'>
-                  <item.icon size={20} className='text-purple-500' />
+                <div className='w-12 h-12 rounded-xl bg-[var(--input-bg)] border border-[var(--border-glass)] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform'>
+                  <item.icon size={20} className='text-[var(--accent)]' />
                 </div>
                 <span className='block text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-1'>
                   {item.label}

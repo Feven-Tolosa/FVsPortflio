@@ -58,34 +58,22 @@ export default function Contact() {
   }
 
   const contactInfo = [
-    {
-      icon: Mail,
-      value: 'feventolosa14@gmail.com',
-      href: 'mailto:feventolosa14@gmail.com',
-    },
+    { icon: Mail, value: 'feventolosa14@gmail.com', href: 'mailto:feventolosa14@gmail.com' },
+    { icon: Phone, value: '+251 939 733 939', href: 'tel:+251939733939' },
     { icon: MapPin, value: 'Addis Ababa, Ethiopia', href: null },
   ]
 
   const socials = [
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/feven-mercy-42baa8323/',
-      label: 'LinkedIn',
-    },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/feven-mercy-42baa8323/', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/Feven-Tolosa', label: 'GitHub' },
-    {
-      icon: Instagram,
-      href: 'https://www.instagram.com/mercyfev_/',
-      label: 'Instagram',
-    },
+    { icon: Instagram, href: 'https://www.instagram.com/mercyfev_/', label: 'Instagram' },
     { icon: Send, href: 'https://t.me/TAFNEM', label: 'Telegram' },
   ]
 
   return (
     <section id='contact' className='section-padding relative overflow-hidden'>
-      {/* Background glows */}
-      <div className='absolute top-0 right-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[120px]' />
-      <div className='absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-600/5 rounded-full blur-[120px]' />
+      <div className='absolute top-0 right-0 w-[400px] h-[400px] bg-slate-400/5 rounded-full blur-[120px]' />
+      <div className='absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px]' />
 
       <div className='max-w-6xl mx-auto px-6 relative z-10'>
         <motion.div
@@ -118,13 +106,13 @@ export default function Contact() {
             <div className='space-y-5 mb-10'>
               {contactInfo.map((item, i) => (
                 <div key={i} className='flex items-center gap-4'>
-                  <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0'>
-                    <item.icon size={18} className='text-purple-500' />
+                  <div className='w-12 h-12 rounded-xl bg-[var(--input-bg)] border border-[var(--border-glass)] flex items-center justify-center flex-shrink-0'>
+                    <item.icon size={18} className='text-[var(--accent)]' />
                   </div>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className='text-[var(--text-secondary)] hover:text-purple-500 transition-colors'
+                      className='text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors'
                     >
                       {item.value}
                     </a>
@@ -144,7 +132,7 @@ export default function Contact() {
                   href={social.href}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='w-11 h-11 rounded-xl glass-card flex items-center justify-center text-[var(--text-secondary)] hover:text-purple-500 hover:border-purple-500/30 transition-all duration-300'
+                  className='w-11 h-11 rounded-xl glass-card flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent)] transition-all duration-300'
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -222,7 +210,7 @@ export default function Contact() {
               <motion.p
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
-                className='flex items-center gap-2 text-green-400 text-sm'
+                className='flex items-center gap-2 text-green-500 text-sm'
               >
                 <CheckCircle size={16} />
                 Message sent successfully!

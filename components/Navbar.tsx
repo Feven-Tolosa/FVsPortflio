@@ -75,8 +75,8 @@ export default function Navbar() {
               }}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 activeSection === item.href.replace('#', '')
-                  ? 'gradient-text bg-[rgba(168,85,247,0.08)]'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[rgba(168,85,247,0.05)]'
+                  ? 'gradient-text bg-[rgba(148,163,184,0.08)]'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[rgba(148,163,184,0.05)]'
               }`}
             >
               {item.name}
@@ -85,13 +85,13 @@ export default function Navbar() {
 
           <button
             onClick={toggle}
-            className='ml-3 p-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:border-[rgba(168,85,247,0.3)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)]'
+            className='ml-3 p-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:border-[rgba(148,163,184,0.2)] transition-all duration-300'
             aria-label='Toggle theme'
           >
             {theme === 'dark' ? (
               <Sun size={16} className='text-amber-400' />
             ) : (
-              <Moon size={16} className='text-purple-500' />
+              <Moon size={16} className='text-slate-500' />
             )}
           </button>
         </div>
@@ -106,7 +106,7 @@ export default function Navbar() {
             {theme === 'dark' ? (
               <Sun size={16} className='text-amber-400' />
             ) : (
-              <Moon size={16} className='text-purple-500' />
+              <Moon size={16} className='text-slate-500' />
             )}
           </button>
           <button
@@ -131,7 +131,7 @@ export default function Navbar() {
               }}
               className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeSection === item.href.replace('#', '')
-                  ? 'gradient-text bg-[rgba(168,85,247,0.08)]'
+                  ? 'gradient-text bg-[rgba(148,163,184,0.08)]'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
