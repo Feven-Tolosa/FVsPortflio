@@ -1,0 +1,83 @@
+[
+  {
+    "id": "selam-markets",
+    "title": "Selam Markets",
+    "description": "An e-commerce platform for local vendors to sell their products online and for customers to discover and purchase a wide variety of goods.",
+    "image": "/images/project9.png",
+    "link": "https://selam-markets.vercel.app/",
+    "tags": ["Next.js", "Supabase", "Tailwind"],
+    "category": "web"
+  },
+  {
+    "id": "security-system",
+    "title": "Security System",
+    "description": "A comprehensive security management platform with real-time monitoring and incident tracking.",
+    "image": "/images/project-6.png",
+    "link": "https://security-system-ashen.vercel.app/",
+    "tags": ["Next.js", "React", "Tailwind"],
+    "category": "web"
+  },
+  {
+    "id": "ethiogard",
+    "title": "EthioGard.com",
+    "description": "Website for agricultural services and products connecting farmers with markets.",
+    "image": "/images/project-7.png",
+    "link": "https://waf-theta.vercel.app/",
+    "tags": ["Next.js", "Tailwind", "React"],
+    "category": "web"
+  },
+  {
+    "id": "apple-clone",
+    "title": "Apple.com Clone",
+    "description": "A faithful recreation of the Apple website with modern design and animations.",
+    "image": "/images/project-1.jpg",
+    "link": "https://flourishing-gecko-ea3c57.netlify.app/",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "category": "clone"
+  },
+  {
+    "id": "netflix-clone",
+    "title": "Netflix Clone",
+    "description": "Streaming platform interface with movie catalog and search functionality.",
+    "image": "/images/project-2.jpg",
+    "link": "https://spectacular-faun-e28c3b.netlify.app/",
+    "tags": ["React", "Firebase", "API"],
+    "category": "clone"
+  },
+  {
+    "id": "mercy-photography",
+    "title": "Mercy Photography",
+    "description": "Portfolio website for a photography studio with gallery and booking features.",
+    "image": "/images/project-5.jpg",
+    "link": "https://mercyphotostudio.netlify.app/",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "category": "web"
+  },
+  {
+    "id": "f3n-shopping",
+    "title": "F3N Shopping",
+    "description": "E-commerce shopping platform with modern UI and product management.",
+    "image": "/images/project-4.png",
+    "link": "https://f3n-shopping.netlify.app/",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "category": "web"
+  },
+  {
+    "id": "influencer-market",
+    "title": "Influencer Market",
+    "description": "A marketplace connecting influencers with brands for collaborations.",
+    "image": "/images/project-8.png",
+    "link": "https://famous-two.vercel.app/",
+    "tags": ["Next.js", "React", "Tailwind"],
+    "category": "web"
+  },
+  {
+    "id": "juscdc-platform",
+    "title": "JUSCDC Platform",
+    "description": "Career Development Club website for student career resources.",
+    "image": "/images/project-9.png",
+    "link": "https://juscdc-platform.vercel.app/",
+    "tags": ["Next.js", "Supabase", "Tailwind"],
+    "category": "web"
+  }
+]
