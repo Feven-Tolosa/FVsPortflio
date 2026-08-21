@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 import { useTilt } from './useTilt'
+import type { Project } from '@/lib/projects'
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { ref, handleMouseMove, handleMouseLeave } = useTilt({ maxTilt: 10, scale: 1.03 })
 
   return (
@@ -66,83 +67,18 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
   )
 }
 
-const projects = [
-  {
-    title: 'Selam Markets',
-    description: 'An e-commerce platform for local vendors to sell their products online and for customers to discover and purchase a wide variety of goods.',
-    image: '/images/project9.png',
-    link: 'https://selam-markets.vercel.app/',
-    tags: ['Next.js', 'Supabase', 'Tailwind'],
-    category: 'web',
-  },
-  {
-    title: 'Security System',
-    description: 'A comprehensive security management platform with real-time monitoring and incident tracking.',
-    image: '/images/project-6.png',
-    link: 'https://security-system-ashen.vercel.app/',
-    tags: ['Next.js', 'React', 'Tailwind'],
-    category: 'web',
-  },
-  {
-    title: 'EthioGard.com',
-    description: 'Website for agricultural services and products connecting farmers with markets.',
-    image: '/images/project-7.png',
-    link: 'https://waf-theta.vercel.app/',
-    tags: ['Next.js', 'Tailwind', 'React'],
-    category: 'web',
-  },
-  {
-    title: 'Apple.com Clone',
-    description: 'A faithful recreation of the Apple website with modern design and animations.',
-    image: '/images/project-1.jpg',
-    link: 'https://flourishing-gecko-ea3c57.netlify.app/',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    category: 'clone',
-  },
-  {
-    title: 'Netflix Clone',
-    description: 'Streaming platform interface with movie catalog and search functionality.',
-    image: '/images/project-2.jpg',
-    link: 'https://spectacular-faun-e28c3b.netlify.app/',
-    tags: ['React', 'Firebase', 'API'],
-    category: 'clone',
-  },
-  {
-    title: 'Mercy Photography',
-    description: 'Portfolio website for a photography studio with gallery and booking features.',
-    image: '/images/project-5.jpg',
-    link: 'https://mercyphotostudio.netlify.app/',
-    tags: ['JavaScript', 'HTML', 'CSS'],
-    category: 'web',
-  },
-  {
-    title: 'F3N Shopping',
-    description: 'E-commerce shopping platform with modern UI and product management.',
-    image: '/images/project-4.png',
-    link: 'https://f3n-shopping.netlify.app/',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    category: 'web',
-  },
-  {
-    title: 'Influencer Market',
-    description: 'A marketplace connecting influencers with brands for collaborations.',
-    image: '/images/project-8.png',
-    link: 'https://famous-two.vercel.app/',
-    tags: ['Next.js', 'React', 'Tailwind'],
-    category: 'web',
-  },
-  {
-    title: 'JUSCDC Platform',
-    description: 'Career Development Club website for student career resources.',
-    image: '/images/project-9.png',
-    link: 'https://juscdc-platform.vercel.app/',
-    tags: ['Next.js', 'Supabase', 'Tailwind'],
-    category: 'web',
-  },
-]
-
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/projects')
+      .then((res) => res.json())
+      .then((data) => setProjects(data.projects || []))
+      .catch(() => setProjects([]))
+      .finally(() => setLoading(false))
+  }, [])
 
   const filters = [
     { name: 'All', value: 'all' },
@@ -198,11 +134,17 @@ export default function Projects() {
         </div>
 
         {/* Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <p className='text-center text-[var(--text-secondary)]'>Loading projects...</p>
+        ) : filteredProjects.length === 0 ? (
+          <p className='text-center text-[var(--text-secondary)]'>No projects found.</p>
+        ) : (
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        )}
 
         <motion.div
           className='text-center mt-14'
