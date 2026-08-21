@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { get, head, put } from '@vercel/blob'
+import { head, put } from '@vercel/blob'
 
 export interface Project {
   id: string
@@ -15,7 +15,7 @@ export interface Project {
 const BLOB_PATH = 'projects.json'
 const dataPath = path.join(process.cwd(), 'data', 'projects.json')
 
-function useBlob(): boolean {
+function blobEnabled(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN)
 }
 
@@ -25,11 +25,12 @@ async function readLocal(): Promise<Project[]> {
 }
 
 export async function readProjects(): Promise<Project[]> {
-  if (!useBlob()) return readLocal()
+  if (!blobEnabled()) return readLocal()
 
   try {
     const meta = await head(BLOB_PATH)
-    const res = await get(meta.url)
+    const res = await fetch(meta.url, { cache: 'no-store' })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
     return JSON.parse(await res.text()) as Project[]
   } catch {
     // First run after deploy: seed the blob with the bundled projects.json
@@ -40,7 +41,7 @@ export async function readProjects(): Promise<Project[]> {
 }
 
 export async function writeProjects(projects: Project[]): Promise<void> {
-  if (!useBlob()) {
+  if (!blobEnabled()) {
     await fs.writeFile(dataPath, JSON.stringify(projects, null, 2), 'utf-8')
     return
   }

@@ -22,12 +22,24 @@ export default function AdminPage() {
     category: 'web',
   })
 
-  const loadProjects = useCallback(async (pass: string) => {
-    setLoadingList(true)
+  const verifyPassword = useCallback(async (pass: string): Promise<string | null> => {
     try {
-      const res = await fetch('/api/projects', {
+      const res = await fetch('/api/projects/verify', {
+        method: 'POST',
         headers: { 'x-admin-password': pass },
       })
+      if (res.ok) return null
+      const data = await res.json().catch(() => ({}))
+      return data.error || 'Login failed'
+    } catch {
+      return 'Could not reach the server'
+    }
+  }, [])
+
+  const loadProjects = useCallback(async () => {
+    setLoadingList(true)
+    try {
+      const res = await fetch('/api/projects')
       if (!res.ok) throw new Error('failed')
       const data = await res.json()
       setProjects(data.projects || [])
@@ -42,22 +54,29 @@ export default function AdminPage() {
   useEffect(() => {
     const saved = sessionStorage.getItem('admin-password')
     if (saved) {
-      loadProjects(saved).then(setAuthed)
       setPassword(saved)
+      verifyPassword(saved).then((err) => {
+        if (!err) {
+          setAuthed(true)
+          loadProjects()
+        } else {
+          sessionStorage.removeItem('admin-password')
+        }
+      })
     }
-  }, [loadProjects])
+  }, [verifyPassword, loadProjects])
 
-  function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setMessage(null)
-    loadProjects(password).then((ok) => {
-      if (ok) {
-        setAuthed(true)
-        sessionStorage.setItem('admin-password', password)
-      } else {
-        setMessage({ type: 'error', text: 'Wrong password or server not configured' })
-      }
-    })
+    const err = await verifyPassword(password)
+    if (err) {
+      setMessage({ type: 'error', text: err })
+      return
+    }
+    setAuthed(true)
+    sessionStorage.setItem('admin-password', password)
+    await loadProjects()
   }
 
   async function handleAdd(e: React.FormEvent) {
@@ -79,11 +98,17 @@ export default function AdminPage() {
             .filter(Boolean),
         }),
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Failed to add project')
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        throw new Error(
+          res.status === 401
+            ? 'Wrong password'
+            : data.error || `Failed to add project (HTTP ${res.status})`,
+        )
+      }
       setForm({ title: '', description: '', image: '', link: '', tags: '', category: form.category })
       setMessage({ type: 'success', text: 'Project added successfully' })
-      await loadProjects(password)
+      await loadProjects()
     } catch (err) {
       setMessage({ type: 'error', text: err instanceof Error ? err.message : 'Something went wrong' })
     } finally {
@@ -99,10 +124,16 @@ export default function AdminPage() {
         method: 'DELETE',
         headers: { 'x-admin-password': password },
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Failed to delete project')
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        throw new Error(
+          res.status === 401
+            ? 'Wrong password'
+            : data.error || `Failed to delete project (HTTP ${res.status})`,
+        )
+      }
       setMessage({ type: 'success', text: 'Project deleted' })
-      await loadProjects(password)
+      await loadProjects()
     } catch (err) {
       setMessage({ type: 'error', text: err instanceof Error ? err.message : 'Something went wrong' })
     }
