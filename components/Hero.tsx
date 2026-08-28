@@ -53,7 +53,7 @@ export default function Hero() {
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-slate-400/5 rounded-full blur-[150px]' />
 
       <div className='container mx-auto px-6 relative z-10'>
-        <div className='flex flex-col lg:flex-row items-center justify-between gap-16'>
+        <div className='flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-12 lg:gap-16'>
           {/* Left Content */}
           <div className='lg:w-1/2'>
             <motion.div
