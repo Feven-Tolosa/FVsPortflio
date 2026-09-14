@@ -2,13 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Zap,
-  Layout,
-  Shield,
-  Code2,
-  Wrench,
-} from 'lucide-react'
+import { Zap, Layout, Shield, Code2, Wrench } from 'lucide-react'
 
 const skills = [
   { name: 'HTML5', level: 95 },
@@ -100,11 +94,11 @@ export default function Skills() {
           <div>
             <div className='flex items-center gap-3 mb-3'>
               <div
-                className={`h-10 w-10 rounded-xl bg-gradient-to-br ${ACCENT} flex items-center justify-center shadow-lg shadow-slate-500/20`}
+                className={`h-10 w-10 rounded-xl bg-linear-to-br ${ACCENT} flex items-center justify-center shadow-lg shadow-slate-500/20`}
               >
                 <Code2 size={18} className='text-white' />
               </div>
-              <h3 className='font-semibold text-lg text-[var(--text-primary)]'>
+              <h3 className='font-semibold text-lg text-(--text-primary)'>
                 Frontend + Backend
               </h3>
             </div>
@@ -118,7 +112,7 @@ export default function Skills() {
           {/* Row 2: Tools — opposite direction */}
           <div>
             <div className='flex items-center gap-3 mb-3'>
-              <div className='h-10 w-10 rounded-xl bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center shadow-lg shadow-slate-700/20'>
+              <div className='h-10 w-10 rounded-xl bg-linear-to-br from-slate-600 to-slate-800 flex items-center justify-center shadow-lg shadow-slate-700/20'>
                 <Wrench size={18} className='text-white' />
               </div>
               <h3 className='font-semibold text-lg text-[var(--text-primary)]'>
@@ -126,7 +120,7 @@ export default function Skills() {
               </h3>
             </div>
             <div className='marquee-mask overflow-hidden group'>
-              <div className='flex gap-4 w-max animate-marquee [animation-direction:reverse] group-hover:[animation-play-state:paused] py-2'>
+              <div className='flex gap-4 w-max animate-marquee-reverse group-hover:[animation-play-state:paused] py-2'>
                 {renderCards(tools)}
               </div>
             </div>

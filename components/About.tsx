@@ -12,7 +12,7 @@ export default function About() {
   ]
 
   return (
-    <section id='about' className='section-padding relative'>
+    <section id='about' className='section-padding relative overflow-hidden'>
       <div className='absolute top-1/2 left-0 w-[400px] h-[400px] bg-slate-400/5 rounded-full blur-[120px] -translate-y-1/2' />
 
       <div className='container mx-auto px-6 relative z-10'>
