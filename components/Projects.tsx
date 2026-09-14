@@ -92,7 +92,7 @@ export default function Projects() {
       : projects.filter((p) => p.category === activeFilter)
 
   return (
-    <section id='projects' className='section-padding relative'>
+    <section id='projects' className='section-padding relative overflow-hidden'>
       <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-slate-500/5 rounded-full blur-[120px]' />
 
       <div className='container mx-auto px-6 relative z-10'>
