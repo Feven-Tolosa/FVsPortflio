@@ -57,6 +57,53 @@ export async function POST(req: Request) {
   }
 }
 
+export async function PUT(req: Request) {
+  if (!isAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  try {
+    const id = new URL(req.url).searchParams.get('id')
+    if (!id) {
+      return NextResponse.json({ error: 'Missing id' }, { status: 400 })
+    }
+
+    const { title, description, image, link, tags, category } = await req.json()
+
+    if (!title || !description || !image || !link) {
+      return NextResponse.json(
+        { error: 'Title, description, image and link are required' },
+        { status: 400 },
+      )
+    }
+
+    const projects = await readProjects()
+    const index = projects.findIndex((p) => p.id === id)
+
+    if (index === -1) {
+      return NextResponse.json({ error: 'Project not found' }, { status: 404 })
+    }
+
+    const updated: Project = {
+      ...projects[index],
+      title,
+      description,
+      image,
+      link,
+      tags: Array.isArray(tags) ? tags : [],
+      category: category || 'web',
+    }
+
+    projects[index] = updated
+    await writeProjects(projects)
+
+    return NextResponse.json({ success: true, project: updated })
+  } catch (error) {
+    console.error('Project update error:', error)
+    return NextResponse.json({ error: 'Failed to update project' }, { status: 500 })
+  }
+}
+
 export async function DELETE(req: Request) {
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
