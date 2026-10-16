@@ -49,6 +49,7 @@ export async function writeProjects(projects: Project[]): Promise<void> {
   await put(BLOB_PATH, JSON.stringify(projects, null, 2), {
     access: 'public',
     addRandomSuffix: false,
+    allowOverwrite: true,
   })
 }
 
