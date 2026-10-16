@@ -2,11 +2,12 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Lock, Plus, Trash2, Loader2 } from 'lucide-react'
+import { Lock, Plus, Trash2, Loader2, Eye, EyeOff } from 'lucide-react'
 import type { Project } from '@/lib/projects'
 
 export default function AdminPage() {
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [authed, setAuthed] = useState(false)
   const [projects, setProjects] = useState<Project[]>([])
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
@@ -155,14 +156,24 @@ export default function AdminPage() {
               </span>
               <h2 className='text-xl font-semibold'>Login</h2>
             </div>
-            <input
-              type='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Admin password'
-              className='input-glass w-full rounded-xl px-4 py-3 mb-4'
-              required
-            />
+            <div className='relative mb-4'>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Admin password'
+                className='input-glass w-full rounded-xl px-4 py-3 pr-12'
+                required
+              />
+              <button
+                type='button'
+                onClick={() => setShowPassword((v) => !v)}
+                className='absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors'
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
             <button type='submit' className='gradient-btn w-full rounded-xl px-4 py-3 font-medium'>
               Enter
             </button>
