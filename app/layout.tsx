@@ -51,6 +51,9 @@ export const metadata: Metadata = {
     images: ['/opengraph-image.png'],
   },
   icons: { icon: '/favicon.ico' },
+  verification: {
+    google: 'TggyYJeClCBvBbliapqmRNmcM4yU11uycysA8KO-C5Y',
+  },
 }
 
 export default function RootLayout({
