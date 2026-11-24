@@ -157,7 +157,7 @@ export default function Hero() {
               <div className='relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-[var(--border-glass)] glass-card p-2'>
                 <div className='w-full h-full rounded-full overflow-hidden'>
                   <Image
-                    src='/images/hero.jpg'
+                    src='/images/hero.png'
                     alt='Feven Tolosa'
                     width={400}
                     height={400}
